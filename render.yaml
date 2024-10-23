@@ -1,0 +1,9 @@
+services:
+  - type: web
+    name: spellchecker
+    env: production
+    region: region
+    plan: free
+    buildCommand: cargo build --release
+    startCommand: cargo run --release
+    healthCheckPath: /
