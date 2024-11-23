@@ -1,6 +1,8 @@
 #[macro_use]
 extern crate rocket;
 
+use std::env;
+// use dotenv::dotenv;
 use rocket::serde::{json::Json, Deserialize, Serialize};
 use std::fs;
 // use zspell::Dictionary;
