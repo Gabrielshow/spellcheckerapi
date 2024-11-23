@@ -39,5 +39,12 @@ fn spellcheck(request: Json<SpellCheckRequest>) -> Json<SpellCheckResponse> {
 
 #[launch]
 fn rocket() -> _ {
-    rocket::build().mount("/", routes![spellcheck])
+    let port: u16 = env::var("PORT").unwrap_or_else(|_| "8000".to_string()).parse().unwrap();
+    
+    // Launch the Rocket application on the specified address and port
+    rocket::build().mount("/", routes![spellcheck]).configure(rocket::config::Config {
+        port,
+        address: "0.0.0.0".parse().unwrap(),
+        ..Default::default()
+    })
 }
