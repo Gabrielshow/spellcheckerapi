@@ -17,6 +17,11 @@ struct SpellCheckResponse {
     valid: bool,
 }
 
+#[get("/")]
+fn index() -> &'static str {
+    "Welcome to the Spell Check API!"
+}
+
 #[post("/api/spellcheck", format = "json", data = "<request>")]
 fn spellcheck(request: Json<SpellCheckRequest>) -> Json<SpellCheckResponse> {
     // Load the affix file and dictionary file content
